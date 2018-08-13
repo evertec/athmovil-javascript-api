@@ -1,4 +1,4 @@
-# ATH Móvil Web Javascript and Services
+# ATH Móvil Payment Button Javascript and Services
 
 
 ## Introduction
