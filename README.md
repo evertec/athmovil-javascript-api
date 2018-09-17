@@ -21,8 +21,10 @@ Before getting started you will need to reference both jQuery and ATH Móvil's A
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://www.athmovil.com/api/js/athmovil.js"></script>
 ```
+*Notes:* 
 
-*jQuery can be referenced on other locations. Downloaded versions can also be used. Version 3.3.1 or higher is required.*
+* *ATH Móvil must be referenced at the bottom of the document since some variables need to be previously initialized.* 
+* *jQuery can be referenced on other locations. Downloaded versions can also be used. Version 3.3.1 or higher is required.*
 
 ## Usage
 To integrate ATH Móvil’s checkout process to your website follow these steps:
