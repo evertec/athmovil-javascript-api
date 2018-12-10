@@ -46,7 +46,7 @@ Configure the payment values using javascript on your checkout view.
     ATHMovil_CHECKOUT_EXPRESS = {
 
         env: 'sandbox',
-        token: 'sandboxtoken0187',
+        token: 'sandboxtoken01875617264',
 
         timeout: 300000,
 
