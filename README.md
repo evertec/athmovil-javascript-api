@@ -1,102 +1,107 @@
-# ATH Móvil Payment Button Javascript and Services
-
+# ATH Móvil Payment Button - Javascript Integration and Services
 
 ## Introduction
-ATH Móvil's Web API provides a simple, secure and fast checkout experience to customers using your website. After integrating our simple checkout process on your website, you will be able to receive instant payments from more than a million ATH Móvil users.
+ATH Móvil's Javascript integration provides a simple, secure and fast checkout experience to customers paying on your website. After integrating our Payment Button on your website, you will be able to receive instant payments from more than a million ATH Móvil users.
 
 ## Prerequisites
 Before you begin, please review the following prerequisites:
 
-* An active ATH Móvil Business account is required to continue. *To sign up, download the ATH Móvil Business application on your iOS or Android on your mobile device.*
+* An active ATH Móvil Business account is required to continue.
+Note: *To sign up, download "ATH Móvil Business"x on the App Store if you have an iOS device or on the Play Store if you have an Android device.*
 
 * Your ATH Móvil Business account needs to have a registered, verified and active ATH® card.
 
-* Have the API key of your Business account at hand. You can view your API key on the settings section of the ATH Móvil Business application for iOS or Android.
+* Have the public and private API keys of your Business account at hand. Note: *You can view your API keys on the settings section of the ATH Móvil Business application for iOS or Android.*
 
 If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466.
 
 ## Installation
-Before getting started you will need to reference both jQuery and ATH Móvil's API on your project's checkout file.
+Before getting started you will need to add references to both jQuery and ATH Móvil's javascript on your project's HTML checkout file.
 ```javascript
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://www.athmovil.com/api/js/athmovil.js"></script>
 ```
-*Notes:* 
-
-* *ATH Móvil must be referenced at the bottom of the document since some variables need to be previously initialized.* 
-* *jQuery can be referenced on other locations. Downloaded versions can also be used. Version 3.3.1 or higher is required.*
+```javascript
+<script src="https:// www.athmovil.com/api/js/v2/athmovilV2.js"></script>
+```
+*Notes:*
+* *ATH Móvil's javascript must be referenced at the bottom of the document since some variables need to be previously initialized.*
+* *jQuery can be referenced on any location. Local versions can also be used. Version 3.3.1 or higher is required.*
 
 ## Usage
-To integrate ATH Móvil’s checkout process to your website follow these steps:
+To integrate ATH Móvil’s Payment Button on your website follow these steps:
 
 ### HTML
 Add the “Pay with ATH Móvil” button to your checkout view.
 ```html
   <div id="ATHMovil_Checkout_Button"></div>
 ```
-*Button width is set to fill its parent while height changes proportionally to the width.*
+* Button width is set to fill its parent.
+* Button height is proportional to the width.
 
 ---
 
 ### Javascript
-Configure the payment values using javascript on your checkout view.
+Configure the payment values using the javascript script below on your checkout view.
 ```javascript
 <script type="text/javascript">
 
-    ATHMovil_CHECKOUT_EXPRESS = {
+    ATHM_Checkout = {
 
         env: 'sandbox',
-        token: 'sandboxtoken01875617264',
+        publicToken: 'sandboxtoken01875617264',
 
-        timeout: 300000,
+        timeout: 600,
 
-        ordertype: 'ATHMovil_CHECKOUT_EXPRESS',
-
-        style: 'btn',
+        theme: 'btn',
         lang: 'en',
 
-        paymenttotal: 1.00,
-        paymenttax: 1.00,
-        paymentsubtotal: 1.00,
+        total: 1.00,
+        tax: 1.00,
+        subtotal: 1.00,
+
+        metadata1: 'metadata1 test',
+        metadata2: 'metadata2 test',
 
         items: [
             {
-                "name":"First Item Name",
-                "description":"This is an item description.",
+                "name":"First Item",
+                "description":"This is a description.",
                 "quantity":"1",
                 "price":"1.00",
                 "tax":"1.00",
-                "sku":"aw2518h"
+                "metadata":"metadata test"
             },
             {
-                "name":"Second Item Name",
-                "description":"This is an item description.",
+                "name":"Second Item",
+                "description":"This is another description.",
                 "quantity":"1",
                 "price":"1.00",
                 "tax":"1.00",
-                "sku":"aw2518hf"
+                "metadata":"metadata test"
             }
         ],
 	...
 	</script>
 ```
+* Details:
 
 | Variable  | Data Type | Required | Values | Description |
 | ------------- |:-------------:|:-----:| ------------- |  ------------- |
-| `env` | String  | Yes | `sandbox` or  `production` | Use `sandbox` to perform test payments and `production` for real payments . |
-| `token` | String | Yes | Business account API key. | Required for security purposes. |
-| `timeout` | Number | No | Number between `120000` and `600000`. | Use this optional variable to limit the amount of time (in milliseconds) that the user has to complete the payment. Timer starts the moment ATH Móvil's instance is displayed. The default value of this method is set to 600000 (10 mins). |
-| `ordertype` | String | Yes | `ATHMovil_CHECKOUT_EXPRESS` | Always set to provided string. |
-| `style` | String | Yes | `btn`, `btn-dark` or `btn-light`. | Defines the theme of the “Pay with ATH Móvil” button that is displayed to the end user. |
-| `lang` | String | Yes | `en` for english or `es` for spanish. | Defines the language of the “Pay with ATH Móvil” button that is displayed to the end user. |
-| `paymenttotal` | Number | Yes | From `1.00` to `1500.00`. | The amount provided on this method is the final amount to be paid by the end user. |
-| `paymenttax` | Number | No || Use this optional variable to display the payment tax. |
-| `paymentsubtotal` | Number | No || Use this optional variable to display the payment subtotal. |
-| `items` | Array | Yes || Use this variable to display on ATH Móvil's checkout screen the items that the user is purchasing. *`sku` and `tax` are required but can be set as null.* *If you don't want to include items leave this variable empty `items[]`* |
+| `env` | String  | Yes | `sandbox` or  `production` | Determines the environment to be used for the payment. Use `sandbox` for simulated payment responses or `production` for real payments. |
+| `publicToken` | String | Yes | Business account public token. | Determines the Business account where the payment will be sent to. |
+| `timeout` | Number | No | Number between `120` and `600`. | Expires the payment process if the payment hasn't been completed by the user after the provided amount of time (in seconds). Countdown starts immediately after the user presses the Payment Button. Default value is set to 600 seconds (10 mins). |
+| `theme` | String | Yes | `btn`, `btn-dark` or `btn-light`. | Determines the colors of the “Pay with ATH Móvil” button that is displayed on your view. |
+| `lang` | String | Yes | `en` for english or `es` for spanish. | Determines the language of the “Pay with ATH Móvil” button and the payment process.|
+| `total` | Number | Yes | From `1.00` to `1500.00`. |  Total amount to be paid by the end user. |
+| `tax` | Number | No || Optional  variable to display the payment tax (if applicable). |
+| `subtotal` | Number | No || Optional variable to display the payment subtotal (if applicable). |
+| `metadata1` | String | No || Optional variable to attach key-value data to the payment object. |
+| `metadata2` | String | No || Optional variable to attach key-value data to the payment object. |
+| `items` | Array | Yes || Optional variable to display the items that the user is purchasing on ATH Móvil's payment screen. *`metadata` and `tax` are required but they can be set as `null`.* |
 
-* `styles`:
+* `theme`:
 
-| Style  | Example |
+| Theme | Example |
 | ------------- |-------------|
 | `btn` | ![alt text](https://image.ibb.co/e7883o/Default.png) |
 | `btn-light` | ![alt text](https://image.ibb.co/jAOaio/Light.png) |
@@ -104,128 +109,190 @@ Configure the payment values using javascript on your checkout view.
 
 * `lang`:
 
-| Languages  | Example |
+| Languages | Example |
 | ------------- |-------------|
 | `en` | ![alt text](https://image.ibb.co/e7883o/Default.png) |
 | `es` | ![alt text](https://image.ibb.co/mLyVG8/Default.png) |
 
-Handle all the possible payment responses.
+Handle all payment responses.
 * Completed
 ```javascript
-onResponsePayment: function(response)
+ onCompletedPayment: function (response)
 		 {
-				 //Handle Completed response
+				 //Handle response
 		 },
 ```
 
+
 * Cancelled
 ```javascript
-onCancelPayment: function(response)
+onCancelledPayment: function (response)
 		{
-				//Handle Cancelled response
+				//Handle response
 		},
 ```
 
-* Timeout
+
+* Expired
 ```javascript
-onTimeoutPayment: function(response)
+onExpiredPayment: function (response)
 		{
-				//Handle Timeout response
+				//Handle response
 		}
 ```
 
+* `response` data
+```javascript
+{
+  "referenceNumber": "a387643827-fdew98ffw9fbfewkjb",
+  "total": 1.00,
+  "tax": 1.00,
+  "subtotal": 1.00,
+  "metadata1": "metadata1 test",
+  "metadata2": "metadata2 test",
+  "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another  description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
+}
+```
+
 ## Testing
-To test ATH Móvil’s checkout process on your website follow these steps:
+To test ATH Móvil’s Payment Button on your website follow these steps:
 * Set the `env` variable to the value `sandbox`.
+
+* Set the `publicToken` variable to the value `sandboxtoken01875617264`.
 
 * Open the payment process.
 
-* Use any username or password to log in
+* Use any username and password to log in.
 
-* Complete or cancel the payment process to test both responses.  Timeouts can be tested by waiting for the set timer to expire.
+* Complete, cancel or wait for the payment to expire to test all possible responses.
 
-*Testing payment completions on mobile devices is not supported by the sandbox.*
 
-## Additional Services
-ATH Móvil's API provides two services that can be used to verify the status of transactions and perform refunds.
+## Services
+The following services can be used to verify the status of a transaction, perform refunds and request a list of all the payments received in a given time frame.
 
-### Transaction Status Service
+### Transaction Status
 * Method:` POST`
 * Headers: `Content-Type` -	`application/json`
-* Endpoint: `https://www.athmovil.com/rs/transactionStatus`
-* Request:
+ Endpoint: `https://www.athmovil.com/rs/v2/transactionStatus`
+* Body Example:
 ```javascript
 {
-    "token":"fb1f7ae2849a07da1545a89d997d8a435a5f21ac",
-    "transactionId":"874639874bjhvhgfiugff4392890-"
+    "publicToken": "hdb932832klnasKJGDW90291",
+    "privateToken": "JHEFEWP2048FNDFLKJWB2",
+    "referenceNumber": "a387643827-fdew98ffw9fbfewkjb"
 }
 ```
 
-* Reponse:
+* Reponse Example:
 ```javascript
 {
-    "paymentDetails": "[{\"Item Name\":\"First Item Name\",\"description\":\"This is a description\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"sku\":\"123123kjkajsdas\",\"formattedPrice\":\"$35.00\"},{\"name\":\"Nier: Automata DLC\",\"description\":\"VideoGame\",\"quantity\":\"1\",\"price\":\"17.2\",\"tax\":\"0\",\"sku\":\"lloiasdasd123123\",\"formattedPrice\":\"$17.20\"}]",
-    "transactionStatus": "COMPLETED",
-    "refundedStatus": "NOT REFUNDED"
+    "status": "completed",
+    "referenceNumber": "212831546-402894d56b240610016b2e6c78a6003a",
+    "date": "2019-06-06 16:12:02.0",
+    "refundedAmount": "0.00",
+    "total": "1.00",
+    "tax": "1.00",
+    "subtotal": "1.00",
+    "metadata1": "metadata1 test",
+    "metadata2": "metadata2 test",
+    "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
 }
 ```
-
-| Response Field  | Possible Values |
-| ------------- | ------------- |
-| paymentDetails | Returns the provided item array. |
-| transactionStatus | `COMPLETED` - The payment was successfully completed.; `FAILED` & `IN_PROCESS_BTRANS` - The payment was not processed.
-| refundedStatus | `NOT REFUNDED` - A refund for the payment has not been performed.; `REFUNDED` - Payment was already refunded. A new refund cannot be performed.|
-
 ----
 
-### Refund Service
+### Refund
 * Method:` POST`
 * Headers: `Content-Type` -	`application/json`
-* Endpoint: `https://www.athmovil.com/rs/refund`
-* Request:
+* Endpoint: `https://www.athmovil.com/rs/v2/refund`
+* Body Example:
 ```javascript
 {
-	"token":"B6FOICTMRV9V49R5BPEHH19DE8XZ7E0U2KINS77H",
-	"transactionId":"ff80808164adb9470164cd74ac57018d",
-	"amount":"1.00"
+    "publicToken": "hdb932832klnasKJGDW90291",
+    "privateToken": "JHEFEWP2048FNDFLKJWB2",
+    "referenceNumber": "387643827-fdew98ffw9fbfewkjb"
+    "amount":"1.00"
 }
 ```
-* Refund Completed Response:
+* Response Example:
 ```javascript
 {
-	"refundStatus": "Completed",
-	"completed": true,
-	"error": "null",
-	"errorMessage": "null"
+  "refundStatus": "completed",
+  "referenceNumber": "212831546-402894d56b240610016b2e6c78a6003a",
+  "date": "2019-06-06 16:12:02.0",
+  "refundedAmount": "0.00",
+  "total": "1.00",
+  "tax": "1.00",
+  "subtotal": "1.00",
+  "metadata1": "metadata1 test",
+  "metadata2": "metadata2 test",
+  "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
 }
 ```
-*Values are fixed.*
+----
 
-* Refund Failed Response:
+### Transactions
+* Method:` GET`
+* Headers: `Content-Type` -	`application/json`
+* Endpoint: `https://www.athmovil.com/transactions/v1/business`
+* Body Example:
 ```javascript
 {
-	"idError": "7010",
-	"error": "Transaction already Refunded",
+    "publicToken": "hdb932832klnasKJGDW90291",
+    "privateToken": "JHEFEWP2048FNDFLKJWB2",
+    "fromDate": "2019-01-01 16:12:02.0",
+    "toDate":"2019-06-06 16:12:02.0"
 }
 ```
+* Response Example:
+```javascript
+{
+    [
+      "transactionType": "refund",
+      "referenceNumber": "212831546-7638e92vjhsbjbsdkjqbjkbqdq",
+      "date": "2019-06-06 17:12:02.0",
+      "refundedAmount": "1.00",
+      "total": "1.00",
+      "tax": "1.00",
+      "subtotal": "1.00",
+      "metadata1": "metadata1 test",
+      "metadata2": "metadata2 test",
+      "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
+    ],
+    [
+      "transactionType": "payment",
+      "status": "completed",
+      "referenceNumber": "212831546-402894d56b240610016b2e6c78a6003a",
+      "date": "2019-06-06 16:12:02.0",
+      "refundedAmount": "0.00",
+      "total": "1.00",
+      "tax": "1.00",
+      "subtotal": "1.00",
+      "metadata1": metadata1 test,
+      "metadata2": metadata2 test,
+      "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
+    ]
+}
+```
+----
 
-| `idError`  | Description |
+### Errors Codes
+
+| Error Code  | Description |
 | ------------- | ------------- |
-| 4010 | Transaction and Token missing |
-| 4011 | Transaction, Token and amount missing |
-| 4020 | Transaction type not eCommerce |
-| 3010 | Token is invalid |
-| 3020 | Token is off |
-| 3030 | Token missing |
-| 5010 | Transaction not found |
-| 5020 | Transaction does not match business |
-| 5030 | Transaction missing |
-| 7010 | Transaction already Refunded |
-| 7020 | Amount invalid |
-| 7030 | Amount Missing |
-| 7040 | Error transaction |
-
-
+| 3010 | publicToken is invalid |
+| 3020 | publicToken is revoked |
+| 3030 | publicToken is required |
+| 3040 | privateToken is invalid |
+| 3050 | privateToken is revoked |
+| 3060 | privateToken is required |
+| 3070 | tokens are from different accounts |
+| 4010 | referenceNumber is required |
+| 5010 | transaction does not exist |
+| 5020 | transaction is from another business |
+| 7010 | transaction already refunded |
+| 7020 | amount is invalid |
+| 7030 | amount is required |
+| 7040 | error completing refund |
 
 ## User Experience
 ![alt text](https://preview.ibb.co/c61Xqe/API_Flow.png)
