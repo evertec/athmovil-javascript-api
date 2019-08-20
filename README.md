@@ -298,7 +298,7 @@ The following services can be used to verify the status of a transaction, perfor
 ![alt text](https://preview.ibb.co/c61Xqe/API_Flow.png)
 
 ## Legal
-###Terms for the use of the API
+### Terms for the use of the API
 1. General. You have the option of using the API code described herein, free of charge, which will allow you to integrate the ATH Móvil®  as a method of payment in your business’ webpages or applications through the ATH Móvil Business® service (the “Service”) provided by Evertec Group, LLC (“Evertec,” “we,” or “us”). You can also find the API code and related API documentation (the “Licensed Materials”) free of charge in www.athmovilbusiness.com under the “Botón de Pago” section. For purposes of these terms and conditions, references to “you” or “your” refer to you as a user of the service who operates a business and wishes to receive payments for goods and services through the Service.
 To use the API, you must:
 (1) be registered in the Service,
