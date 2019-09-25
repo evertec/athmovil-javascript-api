@@ -295,7 +295,7 @@ The following services can be used to verify the status of a transaction, perfor
 | 7040 | error completing refund |
 
 ## User Experience
-![Web](Web.png)
+![paymentux](paymentux.png)
 
 ## Legal
 ### Terms for the use of the API
