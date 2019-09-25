@@ -295,7 +295,7 @@ The following services can be used to verify the status of a transaction, perfor
 | 7040 | error completing refund |
 
 ## User Experience
-![alt text](https://preview.ibb.co/c61Xqe/API_Flow.png)
+![Web](Web.png)
 
 ## Legal
 ### Terms for the use of the API
