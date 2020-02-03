@@ -239,8 +239,8 @@ The following services can be used to verify the status of a transaction, perfor
 {
     "publicToken": "hdb932832klnasKJGDW90291",
     "privateToken": "JHEFEWP2048FNDFLKJWB2",
-    "fromDate": "2019-01-01 16:12:02.0",
-    "toDate":"2019-06-06 16:12:02.0"
+    "fromDate": "2019-01-01 16:12:02",
+    "toDate":"2019-06-06 16:12:02"
 }
 ```
 * Response Example:
