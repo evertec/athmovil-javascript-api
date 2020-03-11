@@ -21,7 +21,7 @@ Before getting started you will need to add references to both jQuery and ATH MÃ
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 ```
 ```javascript
-<script src="https:// www.athmovil.com/api/js/v2/athmovilV2.js"></script>
+<script src="https://www.athmovil.com/api/js/v2/athmovilV2.js"></script>
 ```
 *Notes:*
 * *ATH MÃ³vil's javascript must be referenced at the bottom of the document since some variables need to be previously initialized.*
