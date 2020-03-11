@@ -13,7 +13,7 @@ Note: *To sign up, download "ATH Móvil Business"x on the App Store if you have 
 
 * Have the public and private API keys of your Business account at hand. Note: *You can view your API keys on the settings section of the ATH Móvil Business application for iOS or Android.*
 
-If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466.
+If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form  https://forms.gle/ZSeL8DtxVNP2K2iDA.
 
 ## Installation
 Before getting started you will need to add references to both jQuery and ATH Móvil's javascript on your project's HTML checkout file.
