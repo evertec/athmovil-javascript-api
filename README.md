@@ -6,13 +6,16 @@ ATH Móvil's Javascript integration provides a simple, secure and fast checkout 
 ## Prerequisites
 Before you begin, please review the following prerequisites:
 
-* An active ATH Móvil Business account is required to continue.
-Note: *To sign up, download "ATH Móvil Business"x on the App Store if you have an iOS device or on the Play Store if you have an Android device.*
+1. An active ATH Móvil Business account is required to continue.
+ * Note: *To sign up, download "ATH Móvil Business" on the App Store if you have an iOS device or on the Play Store if you have an Android device.*
 
-* Your ATH Móvil Business account needs to have a registered, verified and active ATH® card.
 
-* Have the public and private API keys of your Business account at hand. Note: *You can view your API keys on the settings section of the ATH Móvil Business application for iOS or Android.*
+2. Your ATH Móvil Business account needs to have a registered, verified and active ATH® card.
 
+3. Have the public and private API keys of your Business account at hand.
+ * Note: ***You can view your API keys on the settings section of the ATH Móvil Business application for iOS or Android.***
+
+## Support
 If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form:  https://forms.gle/ZSeL8DtxVNP2K2iDA.
 
 ## Installation
@@ -81,7 +84,9 @@ Configure the payment values using the javascript script below on your checkout 
             }
         ],
 	...
+    }
 	</script>
+
 ```
 * Details:
 
