@@ -1,19 +1,17 @@
 # ATH Móvil Payment Button - Javascript Integration and Services
 
 ## Introduction
-ATH Móvil's Javascript integration provides a simple, secure and fast checkout experience to customers paying on your website. After integrating our Payment Button on your website, you will be able to receive instant payments from more than a million ATH Móvil users.
+ATH Móvil's Javascript integration provides a simple, secure and fast checkout experience to customers paying on your website. After integrating our Payment Button on your website, you will be able to receive real time payments from more than 1.5 million ATH Móvil users.
 
 ## Prerequisites
 Before you begin, please review the following prerequisites:
 
-1. An active ATH Móvil Business account is required to continue.
- * Note: *To sign up, download "ATH Móvil Business" on the App Store if you have an iOS device or on the Play Store if you have an Android device.*
+1. An active ATH Móvil Business account is required to continue. To sign up, download "ATH Móvil Business" on the App Store or Play Store of your iOS or Android device.
 
 
 2. Your ATH Móvil Business account needs to have a registered, verified and active ATH® card.
 
-3. Have the public and private API keys of your Business account at hand.
- * Note: ***You can view your API keys on the settings section of the ATH Móvil Business application for iOS or Android.***
+3. Have the public and private API keys of your Business account at hand. **You can view your API keys on the settings section of ATH Móvil Business for iOS or Android.**
 
 ## Support
 If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form:  https://forms.gle/ZSeL8DtxVNP2K2iDA.
@@ -24,7 +22,7 @@ Before getting started you will need to add references to both jQuery and ATH M�
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 ```
 ```javascript
-<script src="https://www.athmovil.com/api/js/v2/athmovilV2.js"></script>
+<script src="https://www.athmovil.com/api/js/v3/athmovilV3.js"></script>
 ```
 *Notes:*
 * *ATH Móvil's javascript must be referenced at the bottom of the document since some variables need to be previously initialized.*
@@ -82,10 +80,9 @@ Configure the payment values using the javascript script below on your checkout 
                 "tax":"1.00",
                 "metadata":"metadata test"
             }
-        ],
-	...
+        ]
     }
-	</script>
+</script>
 
 ```
 * Details:
@@ -93,13 +90,13 @@ Configure the payment values using the javascript script below on your checkout 
 | Variable  | Data Type | Required | Values | Description |
 | ------------- |:-------------:|:-----:| ------------- |  ------------- |
 | `env` | String  | Yes | `sandbox` or  `production` | Determines the environment to be used for the payment. Use `sandbox` for simulated payment responses or `production` for real payments. |
-| `publicToken` | String | Yes | Business account public token. | Determines the Business account where the payment will be sent to. |
-| `timeout` | Number | No | Number between `120` and `600`. | Expires the payment process if the payment hasn't been completed by the user after the provided amount of time (in seconds). Countdown starts immediately after the user presses the Payment Button. Default value is set to 600 seconds (10 mins). |
+| `publicToken` | String | Yes | Business account public token. | Determines the Business account that the payment will be sent to. |
+| `timeout` | Number | No | Number between `120` and `600`. | Cancels the payment process if the payment hasn't been completed by the end user after the provided amount of time (in seconds). Timer starts immediately after the end user presses the Payment Button. Default value is set to 600 seconds (10 mins). |
 | `theme` | String | Yes | `btn`, `btn-dark` or `btn-light`. | Determines the colors of the “Pay with ATH Móvil” button that is displayed on your view. |
 | `lang` | String | Yes | `en` for english or `es` for spanish. | Determines the language of the “Pay with ATH Móvil” button and the payment process.|
 | `total` | Number | Yes | From `1.00` to `1500.00`. |  Total amount to be paid by the end user. |
 | `tax` | Number | No || Optional  variable to display the payment tax (if applicable). |
-| `subtotal` | Number | No || Optional variable to display the payment subtotal (if applicable). |
+| `subtotal` | Number | No || Optional variable to display the payment subtotal to the end user (if applicable). |
 | `metadata1` | String | No || Optional variable to attach key-value data to the payment object. |
 | `metadata2` | String | No || Optional variable to attach key-value data to the payment object. |
 | `items` | Array | Yes || Optional variable to display the items that the user is purchasing on ATH Móvil's payment screen. *`metadata` and `tax` are required but they can be set as `null`.* |
@@ -146,26 +143,36 @@ onExpiredPayment: function (response)
 		}
 ```
 
-* `response` data
+* Completed `response` data example
 ```javascript
 {
-  "referenceNumber": "a387643827-fdew98ffw9fbfewkjb",
-  "total": 1.00,
-  "tax": 1.00,
-  "subtotal": 1.00,
-  "metadata1": "metadata1 test",
-  "metadata2": "metadata2 test",
-  "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another  description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
+    "status": "completed",
+    "date": "2019-06-06 16:12:02.0",
+    "referenceNumber": "a387643827-fdew98ffw9fbfewkjb",
+    "dailyTransactionID": "1234",
+    "name": "Valeria Herrero",
+    "phoneNumber": "7871234567",
+    "email": "valher@gmail.com",
+    "message": "",
+    "total": 1.00,
+    "tax": 1.00,
+    "subtotal": 1.00,
+    "fee": 0.06,
+    "netAmount": 0.94,
+    "totalRefundedAmount": 0.00,
+    "metadata1": "metadata1 test",
+    "metadata2": "metadata2 test",
+    "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another  description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
 }
 ```
 
 ## Testing
 To test ATH Móvil’s Payment Button on your website follow these steps:
-* Set the `env` variable to the value `sandbox`.
+* Set `env` to `sandbox`.
 
-* Set the `publicToken` variable to the value `sandboxtoken01875617264`.
+* Set `publicToken` to `sandboxtoken01875617264`.
 
-* Open the payment process.
+* Test the payment process with the new configuration.
 
 * Use any username and password to log in.
 
@@ -173,42 +180,80 @@ To test ATH Móvil’s Payment Button on your website follow these steps:
 
 
 ## Services
-The following services can be used to verify the status of a transaction, perform refunds and request a list of all the payments received in a given time frame.
+The following services can be used to search for transactions, perform refunds and request information of multiple payments received in a given time frame.
 
-### Transaction Status
+### Search
 * Method:` POST`
 * Headers: `Content-Type` -	`application/json`
- Endpoint: `https://www.athmovil.com/rs/v2/transactionStatus`
+* Endpoint: `https://www.athmovil.com/rs/v3/searchTransaction`
 * Body Example:
 ```javascript
 {
     "publicToken": "hdb932832klnasKJGDW90291",
     "privateToken": "JHEFEWP2048FNDFLKJWB2",
-    "referenceNumber": "a387643827-fdew98ffw9fbfewkjb"
+    "referenceNumber": "a387643827-fdew98ffw9fbfewkjb",
+    "dailyTransactionID": "1234",
+    "name": "Valeria Herrero",
+    "phoneNumber": "(787) 123-4567",
+    "email": "valher@gmail.com",
+    "total": "1.00",
+    "metadata1": "metadata1 test",
+    "metadata2": "metadata2 test"
 }
 ```
+  * *Only `publicToken`, `privateToken`any other field is required to search for a transaction.*
+  * *The value of phoneNumber needs to be formatted as in the provided example.*
+  * *To find results the provided field value must be an exact match with the field value of at least one transaction.*
+  * *Multiple fields can be used simultaneously on the request.*
 
 * Reponse Example:
 ```javascript
 {
+    "transactionType": "ecommerce",
     "status": "completed",
-    "referenceNumber": "212831546-402894d56b240610016b2e6c78a6003a",
     "date": "2019-06-06 16:12:02.0",
-    "refundedAmount": "0.00",
-    "total": "1.00",
-    "tax": "1.00",
-    "subtotal": "1.00",
+    "referenceNumber": "402894d56b240610016b2e6c78a6003a",
+    "dailyTransactionID": 1,
+    "name": "Valeria Herrero",
+    "phoneNumber": "(787) 123-4567",
+    "email": "valher@gmail.com",
+    "message": "",
+    "total": 1.00,
+    "tax": 1.00,
+    "subtotal": 1.00,
+    "fee": 0.06,
+    "netAmount": 0.94,
+    "totalRefundedAmount": 0.00,
     "metadata1": "metadata1 test",
     "metadata2": "metadata2 test",
-    "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
+    "items": [
+      {
+        "name": "First Item",
+        "description": "This is a description.",
+        "quantity": "1",
+        "price":"1.00",
+        "tax": "1.00",
+        "metadata": "metadata test"
+      },
+      {
+        "name": "Second Item",
+        "description": "This is another description.",
+        "quantity": "1",
+        "price": "1.00",
+        "tax": "1.00",
+        "metadata":"metadata test"
+      }
+    ]
 }
 ```
+  * *If more than one transaction matches the provided fields all matching payments will be sent on the response as a list.*
+
 ----
 
 ### Refund
 * Method:` POST`
 * Headers: `Content-Type` -	`application/json`
-* Endpoint: `https://www.athmovil.com/rs/v2/refund`
+* Endpoint: `https://www.athmovil.com/rs/v3/refundTransaction`
 * Body Example:
 ```javascript
 {
@@ -221,24 +266,50 @@ The following services can be used to verify the status of a transaction, perfor
 * Response Example:
 ```javascript
 {
-  "refundStatus": "completed",
-  "referenceNumber": "212831546-402894d56b240610016b2e6c78a6003a",
-  "date": "2019-06-06 16:12:02.0",
-  "refundedAmount": "0.00",
-  "total": "1.00",
-  "tax": "1.00",
-  "subtotal": "1.00",
-  "metadata1": "metadata1 test",
-  "metadata2": "metadata2 test",
-  "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
+    "transactionType": "Refund",
+    "status": "completed",
+    "refundedAmount": 1.00,
+    "date": "2019-06-06 16:12:02.0",
+    "referenceNumber": "402894d56b240610016b2e6c78a6003a",
+    "dailyTransactionID": "1",
+    "name": "Valeria Herrero",
+    "phoneNumber": "7871234567",
+    "email": "valher@gmail.com",
+    "message": "",
+    "total": 1.00,
+    "tax": 1.00,
+    "subtotal": 1.00,
+    "fee": 0.06,
+    "netAmount": 0.94,
+    "totalRefundedAmount": 1.00,
+    "metadata1": "metadata1 test",
+    "metadata2": "metadata2 test",
+    "items": [
+      {
+        "name": "First Item",
+        "description": "This is a description.",
+        "quantity": "1",
+        "price":"1.00",
+        "tax": "1.00",
+        "metadata": "metadata test"
+      },
+      {
+        "name": "Second Item",
+        "description": "This is another description.",
+        "quantity": "1",
+        "price": "1.00",
+        "tax": "1.00",
+        "metadata":"metadata test"
+      }
+    ]
 }
 ```
 ----
 
-### Transactions
+### Transaction Report
 * Method:` GET`
 * Headers: `Content-Type` -	`application/json`
-* Endpoint: `https://www.athmovil.com/transactions/v1/business`
+* Endpoint: `https://www.athmovil.com/transactions/v3/transactionReport`
 * Body Example:
 ```javascript
 {
@@ -250,54 +321,84 @@ The following services can be used to verify the status of a transaction, perfor
 ```
 * Response Example:
 ```javascript
-{
-    [
-      "transactionType": "refund",
-      "referenceNumber": "212831546-7638e92vjhsbjbsdkjqbjkbqdq",
-      "date": "2019-06-06 17:12:02.0",
-      "refundedAmount": "1.00",
-      "total": "1.00",
-      "tax": "1.00",
-      "subtotal": "1.00",
-      "metadata1": "metadata1 test",
-      "metadata2": "metadata2 test",
-      "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
-    ],
-    [
-      "transactionType": "payment",
-      "status": "completed",
-      "referenceNumber": "212831546-402894d56b240610016b2e6c78a6003a",
-      "date": "2019-06-06 16:12:02.0",
-      "refundedAmount": "0.00",
-      "total": "1.00",
-      "tax": "1.00",
-      "subtotal": "1.00",
-      "metadata1": metadata1 test,
-      "metadata2": metadata2 test,
-      "items": "[{\"name\":\"First Item\",\"description\":\"This is a description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"},{\"name\":\"Second Item\",\"description\":\"This is another description.\",\"quantity\":\"1\",\"price\":\"1.00\",\"tax\":\"1.00\",\"metadata\":\"metadata test\"}]"
-    ]
-}
+[
+    {
+        "transactionType": "ECOMMERCE",
+        "status": "COMPLETED",
+        "date": "2019-06-06 16:12:02",
+        "referenceNumber": "4028f9e0744c744a01744c7af12e0000",
+        "dailyTransactionID": 3,
+        "name": "Valeria Herrero",
+        "phoneNumber": "(787) 123-4567",
+        "email": "valher@gmail.com",
+        "message": "",
+        "total": 1.00,
+        "tax": 1.00,
+        "subtotal": 1.00,
+        "fee": 0.06,
+        "netAmount": 0.94,
+        "totalRefundedAmount": 1.00,
+        "metadata1": "metadata1 test",
+        "metadata2": "metadata2 test",
+        "items": [
+          {
+            "name": "First Item",
+            "description": "This is a description.",
+            "quantity": "1",
+            "price":"1.00",
+            "tax": "1.00",
+            "metadata": "metadata test"
+          },
+          {
+            "name": "Second Item",
+            "description": "This is another description.",
+            "quantity": "1",
+            "price": "1.00",
+            "tax": "1.00",
+            "metadata":"metadata test"
+          }
+        ]
+    },
+    {
+        "transactionType": "ECOMMERCE",
+        "status": "COMPLETED",
+        "date": "2019-01-01 16:12:02",
+        "referenceNumber": "4028f9e0744c744a01744c7af12e0000",
+        "dailyTransactionID": 3,
+        "name": "Valeria Herrero",
+        "phoneNumber": "(787) 123-4567",
+        "email": "valher@gmail.com",
+        "message": "",
+        "total": 1.00,
+        "tax": 1.00,
+        "subtotal": 1.00,
+        "fee": 0.06,
+        "netAmount": 0.94,
+        "totalRefundedAmount": 1.00,
+        "metadata1": "metadata1 test",
+        "metadata2": "metadata2 test",
+        "items": [
+          {
+            "name": "First Item",
+            "description": "This is a description.",
+            "quantity": "1",
+            "price":"1.00",
+            "tax": "1.00",
+            "metadata": "metadata test"
+          },
+          {
+            "name": "Second Item",
+            "description": "This is another description.",
+            "quantity": "1",
+            "price": "1.00",
+            "tax": "1.00",
+            "metadata":"metadata test"
+          }
+        ]
+    }
+]
 ```
 ----
-
-### Errors Codes
-
-| Error Code  | Description |
-| ------------- | ------------- |
-| 3010 | publicToken is invalid |
-| 3020 | publicToken is revoked |
-| 3030 | publicToken is required |
-| 3040 | privateToken is invalid |
-| 3050 | privateToken is revoked |
-| 3060 | privateToken is required |
-| 3070 | tokens are from different accounts |
-| 4010 | referenceNumber is required |
-| 5010 | transaction does not exist |
-| 5020 | transaction is from another business |
-| 7010 | transaction already refunded |
-| 7020 | amount is invalid |
-| 7030 | amount is required |
-| 7040 | error completing refund |
 
 ## User Experience
 ![paymentux](paymentux.png)
