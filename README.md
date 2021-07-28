@@ -259,7 +259,7 @@ The following services can be used to search for transactions, perform refunds a
 {
     "publicToken": "hdb932832klnasKJGDW90291",
     "privateToken": "JHEFEWP2048FNDFLKJWB2",
-    "referenceNumber": "387643827-fdew98ffw9fbfewkjb"
+    "referenceNumber": "387643827-fdew98ffw9fbfewkjb",
     "amount":"1.00"
 }
 ```
