@@ -185,7 +185,7 @@ The following services can be used to search for transactions, perform refunds a
 ### Search
 * Method:` POST`
 * Headers: `Content-Type` -	`application/json`
-* Endpoint: `https://www.athmovil.com/rs/v3/searchTransaction`
+* Endpoint: `https://www.athmovil.com/api/v4/searchTransaction`
 * Body Example:
 ```javascript
 {
@@ -209,8 +209,8 @@ The following services can be used to search for transactions, perform refunds a
 * Reponse Example:
 ```javascript
 {
-    "transactionType": "ecommerce",
-    "status": "completed",
+    "transactionType": "ECOMMERCE",
+    "status": "COMPLETED",
     "date": "2019-06-06 16:12:02.0",
     "referenceNumber": "402894d56b240610016b2e6c78a6003a",
     "dailyTransactionID": 1,
@@ -230,17 +230,17 @@ The following services can be used to search for transactions, perform refunds a
       {
         "name": "First Item",
         "description": "This is a description.",
-        "quantity": "1",
-        "price":"1.00",
-        "tax": "1.00",
+        "quantity": 1,
+        "price": 1.00,
+        "tax": 1.00,
         "metadata": "metadata test"
       },
       {
         "name": "Second Item",
         "description": "This is another description.",
-        "quantity": "1",
-        "price": "1.00",
-        "tax": "1.00",
+        "quantity": 1,
+        "price": 1.00,
+        "tax": 1.00,
         "metadata":"metadata test"
       }
     ]
@@ -253,55 +253,50 @@ The following services can be used to search for transactions, perform refunds a
 ### Refund
 * Method:` POST`
 * Headers: `Content-Type` -	`application/json`
-* Endpoint: `https://www.athmovil.com/rs/v3/refundTransaction`
+* Endpoint: `https://www.athmovil.com/api/v4/refundTransaction`
 * Body Example:
 ```javascript
 {
     "publicToken": "hdb932832klnasKJGDW90291",
     "privateToken": "JHEFEWP2048FNDFLKJWB2",
-    "referenceNumber": "387643827-fdew98ffw9fbfewkjb"
+    "referenceNumber": "fdew98ffw9fbfewkjb"
     "amount":"1.00"
 }
 ```
 * Response Example:
 ```javascript
 {
-    "transactionType": "Refund",
-    "status": "completed",
-    "refundedAmount": 1.00,
-    "date": "2019-06-06 16:12:02.0",
-    "referenceNumber": "402894d56b240610016b2e6c78a6003a",
-    "dailyTransactionID": "1",
-    "name": "Valeria Herrero",
-    "phoneNumber": "7871234567",
-    "email": "valher@gmail.com",
-    "message": "",
-    "total": 1.00,
-    "tax": 1.00,
-    "subtotal": 1.00,
-    "fee": 0.06,
-    "netAmount": 0.94,
-    "totalRefundedAmount": 1.00,
-    "metadata1": "metadata1 test",
-    "metadata2": "metadata2 test",
-    "items": [
-      {
-        "name": "First Item",
-        "description": "This is a description.",
-        "quantity": "1",
-        "price":"1.00",
-        "tax": "1.00",
-        "metadata": "metadata test"
-      },
-      {
-        "name": "Second Item",
-        "description": "This is another description.",
-        "quantity": "1",
-        "price": "1.00",
-        "tax": "1.00",
-        "metadata":"metadata test"
-      }
-    ]
+    "refund": {
+        "transactionType": "REFUND",
+        "status": "COMPLETED",
+        "refundedAmount": 1.00,
+        "date": "2021-07-08 18:13:58.0",
+        "referenceNumber": "402894d56b240610016b2e6c78a6003a",
+        "dailyTransactionID": 107,
+        "name": " Valeria Herrero",
+        "phoneNumber": "(787) 123-4567",
+        "email": "valher@gmail.com"
+    },
+    "originalTransaction": {
+        "transactionType": "PAYMENT",
+        "status": "COMPLETED",
+        "date": "2021-07-08 18:12:00.0",
+        "referenceNumber": "402894d56b240610016b2e6c78a6003a",
+        "dailyTransactionID": 106,
+        "name": "Valeria Herrero",
+        "phoneNumber": "(787) 123-4567",
+        "email": "valher@gmail.com",
+        "message": "",
+        "total": 1.00,
+        "tax": 0.00,
+        "subtotal": 0.00,
+        "fee": 0.00,
+        "netAmount": 0.00,
+        "totalRefundedAmount": 1.00,
+        "metadata1": "metadata1 test",
+        "metadata2": "metadata2 test",
+        "items": []
+    }
 }
 ```
 ----
@@ -309,7 +304,7 @@ The following services can be used to search for transactions, perform refunds a
 ### Transaction Report
 * Method:` GET`
 * Headers: `Content-Type` -	`application/json`
-* Endpoint: `https://www.athmovil.com/transactions/v3/transactionReport`
+* Endpoint: `https://www.athmovil.com/transactions/v4/transactionReport`
 * Body Example:
 ```javascript
 {
@@ -325,78 +320,70 @@ The following services can be used to search for transactions, perform refunds a
     {
         "transactionType": "ECOMMERCE",
         "status": "COMPLETED",
-        "date": "2019-06-06 16:12:02",
-        "referenceNumber": "4028f9e0744c744a01744c7af12e0000",
-        "dailyTransactionID": 3,
+        "date": "2021-07-08 00:36:39.0",
+        "referenceNumber": "402894d56b240610016b2e6c78a6003a",
+        "dailyTransactionID": 35,
         "name": "Valeria Herrero",
         "phoneNumber": "(787) 123-4567",
         "email": "valher@gmail.com",
         "message": "",
         "total": 1.00,
-        "tax": 1.00,
-        "subtotal": 1.00,
-        "fee": 0.06,
-        "netAmount": 0.94,
-        "totalRefundedAmount": 1.00,
+        "tax": 0.00,
+        "subtotal": 0.00,
+        "fee": 0.00,
+        "netAmount": 1.00,
+        "totalRefundAmount": 1.00,
         "metadata1": "metadata1 test",
         "metadata2": "metadata2 test",
         "items": [
-          {
-            "name": "First Item",
-            "description": "This is a description.",
-            "quantity": "1",
-            "price":"1.00",
-            "tax": "1.00",
-            "metadata": "metadata test"
-          },
-          {
-            "name": "Second Item",
-            "description": "This is another description.",
-            "quantity": "1",
-            "price": "1.00",
-            "tax": "1.00",
-            "metadata":"metadata test"
-          }
-        ]
-    },
-    {
-        "transactionType": "ECOMMERCE",
-        "status": "COMPLETED",
-        "date": "2019-01-01 16:12:02",
-        "referenceNumber": "4028f9e0744c744a01744c7af12e0000",
-        "dailyTransactionID": 3,
-        "name": "Valeria Herrero",
-        "phoneNumber": "(787) 123-4567",
-        "email": "valher@gmail.com",
-        "message": "",
-        "total": 1.00,
-        "tax": 1.00,
-        "subtotal": 1.00,
-        "fee": 0.06,
-        "netAmount": 0.94,
-        "totalRefundedAmount": 1.00,
-        "metadata1": "metadata1 test",
-        "metadata2": "metadata2 test",
-        "items": [
-          {
-            "name": "First Item",
-            "description": "This is a description.",
-            "quantity": "1",
-            "price":"1.00",
-            "tax": "1.00",
-            "metadata": "metadata test"
-          },
-          {
-            "name": "Second Item",
-            "description": "This is another description.",
-            "quantity": "1",
-            "price": "1.00",
-            "tax": "1.00",
-            "metadata":"metadata test"
-          }
-        ]
-    }
-]
+            {
+                "name": "Item",
+                "description": "Description",
+                "quantity": 1,
+                "price": 1.00,
+                "tax": 0.00,
+                "metadata": "Metadata"
+            },
+            {
+                "name": "item",
+                "description": "desc",
+                "quantity": 1,
+                "price": 1.00,
+                "tax": 0.00,
+                "metadata": "Metadata"
+                }
+            ]
+        },
+        {
+            "transactionType": "ECOMMERCE",
+            "status": "COMPLETED",
+            "date": "2021-07-08 00:35:43.0",
+            "referenceNumber": "402894d56b240610016b2e6c78a6003a ",
+            "dailyTransactionID": 33,
+            "name": "Valeria Herrero",
+            "phoneNumber": "(787) 123-4567",
+            "email": "valher@gmail.com",
+            "message": "",
+            "total": 5.00,
+            "tax": 1.00,
+            "subtotal": 2.00,
+            "fee": 0.00,
+            "netAmount": 5.00,
+            "totalRefundAmount": 5.00,
+            "metadata1": "metadata1 test",
+            "metadata2": "metadata1 test",
+            "items": [
+                {
+                    "name": "Nombre de arreglo",
+                    "description": "Prueba de items",
+                    "quantity": 3,
+                    "price": 2.00,
+                    "tax": 1.00,
+                    "metadata": "prueba metadata"
+                }
+            ]
+        }
+    ]
 ```
 ----
 
