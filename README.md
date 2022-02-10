@@ -97,8 +97,8 @@ Configure the payment values using the javascript script below on your checkout 
 | `total` | Number | Yes | From `1.00` to `1500.00`. |  Total amount to be paid by the end user. |
 | `tax` | Number | No || Optional  variable to display the payment tax (if applicable). |
 | `subtotal` | Number | No || Optional variable to display the payment subtotal to the end user (if applicable). |
-| `metadata1` | String | Yes || Optional variable to attach key-value data to the payment object. |
-| `metadata2` | String | Yes || Optional variable to attach key-value data to the payment object. |
+| `metadata1` | String | Yes || Required variable that can be left empty or filled with additional transaction information. |
+| `metadata2` | String | Yes || Required variable that can be left empty or filled with additional transaction information. |
 | `items` | Array | Yes || Optional variable to display the items that the user is purchasing on ATH Móvil's payment screen. *`metadata` and `tax` are required but they can be set as `null`.* |
 
 * `theme`:
