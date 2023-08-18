@@ -353,9 +353,9 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 --data-raw '{
 
-`    `"ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
+`    "ecommerceId"': "177a50fd-39fb-11ed-8b3d-230262020527",
 
-`    `"publicToken": "a66ce73d04f2087615f6320b724defc5b4eedc55",
+`    "publicToken"': "a66ce73d04f2087615f6320b724defc5b4eedc55",
 
 }' 
 
@@ -386,285 +386,293 @@ Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COM
 
 {
 
-`  `"status": "success",
+```
+"status": "success",
 
-`  `"data": {
+"data": {
 
-`    `"ecommerceStatus": "COMPLETED",
+"ecommerceStatus": "COMPLETED",
 
-`    `"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
+"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
 
-`    `"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
+"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
 
-`    `"businessCustomerId": "402894d56e713892016e7f2963de0010",
+"businessCustomerId": "402894d56e713892016e7f2963de0010",
 
-`    `"transactionDate": "2023-01-13 16:17:06",
+"transactionDate": "2023-01-13 16:17:06",
 
-`    `"dailyTransactionId": "0006",
+"dailyTransactionId": "0006",
 
-`    `"businessName": "Tdameritrade",
+"businessName": "Tdameritrade",
 
-`    `"businessPath": "Tdameritrade",
+"businessPath": "Tdameritrade",
 
-`    `"industry": "ENTERTAINMENT",
+"industry": "ENTERTAINMENT",
 
-`    `"subTotal": 0,
+"subTotal": 0,
 
-`    `"tax": 0.00,
+"tax": 0.00,
 
-`    `"total": 1,
+"total": 1,
 
-`    `"fee": 0.6000000238418579,
+"fee": 0.6000000238418579,
 
-`    `"netAmount": 0.40,
+"netAmount": 0.40,
 
-`    `"totalRefundedAmount": 0,
+"totalRefundedAmount": 0,
 
-`    `"metadata1": "Metadata 1",
+"metadata1": "Metadata 1",
 
-`    `"metadata2": "Metada 2",
+"metadata2": "Metada 2",
 
-`    `"items": [
+"items": [
 
-`      `{
+{
 
-`        `"name": "Diego MO",
+"name": "Diego MO",
 
-`        `"description": "Diego",
+"description": "Diego",
 
-`        `"quantity": 1,
+"quantity": 1,
 
-`        `"price": 10,
+"price": 10,
 
-`        `"tax": 0,
+"tax": 0,
 
-`        `"metadata": "Bitcoin es lo mejor"
-
-`      `}
-
-`    `],
-
-`    `"isNonProfit": false
-
-`  `}
+"metadata": "Bitcoin es lo mejor"
 
 }
+
+],
+
+"isNonProfit": false
+
+}
+
+}
+```
+
 
 
 Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Response: Status **OPEN**
-
+```
 {
 
-`    `"status": "success",
+   "status": "success",
 
-`    `"data": {
+    "data": {
 
-`        `"ecommerceStatus": "OPEN",
+        "ecommerceStatus": "OPEN",
 
-`        `"ecommerceId": "39906664-e44e-11ed-b127-a519df48811e",
+        "ecommerceId": "39906664-e44e-11ed-b127-a519df48811e",
 
-`        `"referenceNumber": "",
+        "referenceNumber": "",
 
-`        `"businessCustomerId": "402894d56e713892016e7f2963de0010",
+        "businessCustomerId": "402894d56e713892016e7f2963de0010",
 
-`        `"transactionDate": "",
+        "transactionDate": "",
 
-`        `"dailyTransactionId": "",
+        "dailyTransactionId": "",
 
-`        `"businessName": "Tdameritrade",
+        "businessName": "Tdameritrade",
 
-`        `"businessPath": "Tdameritrade",
+        "businessPath": "Tdameritrade",
 
-`        `"industry": "COMPUTERS",
+        "industry": "COMPUTERS",
 
-`        `"subTotal": 1.33,
+        subTotal": 1.33,
 
-`        `"tax": 1.00,
+          "tax": 1.00,
 
-`        `"total": 2.33,
+        "total": 2.33,
 
-`        `"fee": 0.00,
+       "fee": 0.00,
 
-`        `"netAmount": 0,
+       "netAmount": 0,
 
-`        `"totalRefundedAmount": 0,
+        "totalRefundedAmount": 0,
 
-`        `"metadata1": "Metadata 1",
+       "metadata1": "Metadata 1",
 
-`        `"metadata2": "Metada 2",
+       "metadata2": "Metada 2",
 
-`        `"items": [
+       "items": [
 
-`            `{
+           {
 
-`                `"name": "Diego MO",
+                "name": "Diego MO",
 
-`                `"description": "Diego",
+                "description": "Diego",
 
-`                `"quantity": 1,
+                "quantity": 1,
 
-`                `"price": 1.33,
+                "price": 1.33,
 
-`                `"tax": 1,
+                "tax": 1,
 
-`                `"metadata": "Bitcoin es lo mejor",
+                "metadata": "Bitcoin es lo mejor",
 
-`                `"formattedPrice": "",
+                "formattedPrice": "",
 
-`                `"sku": ""
+                "sku": ""
 
-`            `}
+            }
 
-`        `],
+        ],
 
-`        `"isNonProfit": false
+        "isNonProfit": false
 
-`    `}
+    }
+```
+
 
 Transaction confirmed by the ATH Móvil customer but pending to be processed by the merchant (/payment+/confirm) Response: Status **CONFIRM**
 
+```
 {
 
-`    `"status": "success",
+"status": "success",
 
-`    `"data": {
+"data": {
 
-`        `"ecommerceStatus": "CONFIRM",
+"ecommerceStatus": "CONFIRM",
 
-`        `"ecommerceId": "39906664-e44e-11ed-b127-a519df48811e",
+"ecommerceId": "39906664-e44e-11ed-b127-a519df48811e",
 
-`        `"referenceNumber": "",
+"referenceNumber": "",
 
-`        `"businessCustomerId": "402894d56e713892016e7f2963de0010",
+"businessCustomerId": "402894d56e713892016e7f2963de0010",
 
-`        `"transactionDate": "",
+"transactionDate": "",
 
-`        `"dailyTransactionId": "",
+"dailyTransactionId": "",
 
-`        `"businessName": "Tdameritrade",
+"businessName": "Tdameritrade",
 
-`        `"businessPath": "Tdameritrade",
+"businessPath": "Tdameritrade",
 
-`        `"industry": "COMPUTERS",
+"industry": "COMPUTERS",
 
-`        `"subTotal": 1.33,
+"subTotal": 1.33,
 
-`        `"tax": 1.00,
+"tax": 1.00,
 
-`        `"total": 2.33,
+"total": 2.33,
 
-`        `"fee": 0.00,
+"fee": 0.00,
 
-`        `"netAmount": 0,
+"netAmount": 0,
 
-`        `"totalRefundedAmount": 0,
+"totalRefundedAmount": 0,
 
-`        `"metadata1": "Metadata 1",
+"metadata1": "Metadata 1",
 
-`        `"metadata2": "Metada 2",
+"metadata2": "Metada 2",
 
-`        `"items": [
+"items": [
 
-`            `{
+{
 
-`                `"name": "Diego MO",
+"name": "Diego MO",
 
-`                `"description": "Diego",
+"description": "Diego",
 
-`                `"quantity": 1,
+"quantity": 1,
 
-`                `"price": 1.33,
+"price": 1.33,
 
-`                `"tax": 1,
+"tax": 1,
 
-`                `"metadata": "Bitcoin es lo mejor",
+"metadata": "Bitcoin es lo mejor",
 
-`                `"formattedPrice": "",
+"formattedPrice": "",
 
-`                `"sku": ""
-
-`            `}
-
-`        `],
-
-`        `"isNonProfit": false
-
-`    `}
+"sku": ""
 
 }
 
+],
 
+"isNonProfit": false
+
+}
+
+}
+```
+
+```
 # <a name="_toc133417456"></a><a name="_toc143170432"></a>Transaction Expired or Canceled Response: Status **CANCEL**
 {
 
-`    `"status": "success",
+"status": "success",
 
-`    `"data": {
+"data": {
 
-`        `"ecommerceStatus": "CANCEL",
+"ecommerceStatus": "CANCEL",
 
-`        `"ecommerceId": "29bc7846-e44f-11ed-b127-839ef0792c17",
+"ecommerceId": "29bc7846-e44f-11ed-b127-839ef0792c17",
 
-`        `"referenceNumber": "",
+"referenceNumber": "",
 
-`        `"businessCustomerId": "402894d56e713892016e7f2963de0010",
+"businessCustomerId": "402894d56e713892016e7f2963de0010",
 
-`        `"transactionDate": "",
+"transactionDate": "",
 
-`        `"dailyTransactionId": "",
+"dailyTransactionId": "",
 
-`        `"businessName": "Tdameritrade",
+"businessName": "Tdameritrade",
 
-`        `"businessPath": "Tdameritrade",
+"businessPath": "Tdameritrade",
 
-`        `"industry": "COMPUTERS",
+"industry": "COMPUTERS",
 
-`        `"subTotal": 1.33,
+"subTotal": 1.33,
 
-`        `"tax": 1.00,
+"tax": 1.00,
 
-`        `"total": 2.33,
+"total": 2.33,
 
-`        `"fee": 0.00,
+"fee": 0.00,
 
-`        `"netAmount": 0,
+"netAmount": 0,
 
-`        `"totalRefundedAmount": 0,
+"totalRefundedAmount": 0,
 
-`        `"metadata1": "Metadata 1",
+"metadata1": "Metadata 1",
 
-`        `"metadata2": "Metada 2",
+"metadata2": "Metada 2",
 
-`        `"items": [
+"items": [
 
-`            `{
+{
 
-`                `"name": "Diego MO",
+"name": "Diego MO",
 
-`                `"description": "Diego",
+"description": "Diego",
 
-`                `"quantity": 1,
+"quantity": 1,
 
-`                `"price": 1.33,
+"price": 1.33,
 
-`                `"tax": 1,
+"tax": 1,
 
-`                `"metadata": "Bitcoin es lo mejor",
+"metadata": "Bitcoin es lo mejor",
 
-`                `"formattedPrice": "",
+"formattedPrice": "",
 
-`                `"sku": ""
-
-`            `}
-
-`        `],
-
-`        `"isNonProfit": false
-
-`    `}
+"sku": ""
 
 }
-#
+
+],
+
+"isNonProfit": false
+
+}
+
+}
+```
+
 
 ## Errors
 
