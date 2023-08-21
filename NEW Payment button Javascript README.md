@@ -141,7 +141,7 @@ Finally, you should add in your body html a <div></div> tag with value "ATHMovil
 <script src="js/athmovil_base.js"></script>
 <script type="text/javascript">
           const ATHM_Checkout = {
-              env: 'dev',
+              env: 'production',
               publicToken: 'a66ce73d04f2087615f6320b724defc5b4eedc55',
               timeout: 600,
               orderType: '',
