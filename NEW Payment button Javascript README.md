@@ -99,7 +99,7 @@ Production link: https://payments.athmovil.com/api/js/athmovil_base.js
 
 ```javascript
 public token: a66ce73d04f2087615f6320b724defc5b4eedc55
-<script src="js/athmovil_base.js"></script>```
+<script src="https://payments.athmovil.com/api/js/athmovil_base.js"></script>```
 
 ATH Business Settings:
 
