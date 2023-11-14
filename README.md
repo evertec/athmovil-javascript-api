@@ -78,6 +78,8 @@ ATH Móvil's Javascript integration provides a simple, secure and fast checkout 
 
 The API called for this JavaScript code is build based on JWT protocol to securely authenticate the communication between our services.
 
+Disclaimer: The Payment Button ATH Móvil is not compatible with any major Ecommerce platform. This includes Shopify, Wix, Woocommerce or Stripe.
+
 
 ## Prerequisites
 Before using the ATH Móvil’s payment you need to have:
