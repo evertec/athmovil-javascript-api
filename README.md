@@ -1137,42 +1137,7 @@ The following services can be used to search for transactions, perform refunds a
     "amount":"1.00"
 }
 ```
-* Response Example:
-```javascript
-{
-    "refund": {
-        "transactionType": "REFUND",
-        "status": "COMPLETED",
-        "refundedAmount": 1.00,
-        "date": "2021-07-08 18:13:58.0",
-        "referenceNumber": "402894d56b240610016b2e6c78a6003a",
-        "dailyTransactionID": 107,
-        "name": " Valeria Herrero",
-        "phoneNumber": "(787) 123-4567",
-        "email": "valher@gmail.com"
-    },
-    "originalTransaction": {
-        "transactionType": "PAYMENT",
-        "status": "COMPLETED",
-        "date": "2021-07-08 18:12:00.0",
-        "referenceNumber": "402894d56b240610016b2e6c78a6003a",
-        "dailyTransactionID": 106,
-        "name": "Valeria Herrero",
-        "phoneNumber": "(787) 123-4567",
-        "email": "valher@gmail.com",
-        "message": "",
-        "total": 1.00,
-        "tax": 0.00,
-        "subtotal": 0.00,
-        "fee": 0.00,
-        "netAmount": 0.00,
-        "totalRefundedAmount": 1.00,
-        "metadata1": "metadata1 test",
-        "metadata2": "metadata2 test",
-        "items": []
-    }
-}
-```
+
 ----
 
 ### Transaction Report
