@@ -96,13 +96,12 @@ Additionally have the link for athmovil\_base.js to add it in your ecommerce pla
 
 Production link: https://payments.athmovil.com/api/js/athmovil_base.js
 
-<script src="https://payments.athmovil.com/api/js/athmovil_base.js"></script>
-
-
 ```javascript
-public token: a66ce73d04f2087615f6320b724defc5b4eedc55
-<script src="https://payments.athmovil.com/api/js/athmovil_base.js"></script>```
-
+<script>
+    var publicToken = "a66ce73d04f2087615f6320b724defc5b4eedc55";
+</script>
+<script src="https://payments.athmovil.com/api/js/athmovil_base.js"></script>
+```
 ATH Business Settings:
 
 <img width="98" alt="image" src="https://github.com/evertec/athmovil-javascript-api/assets/99409598/c661343f-45e1-4a70-8d50-e74ee1854986">
@@ -187,9 +186,6 @@ The correct implementation of div and scripts, should show the payment button li
 
 <img width="192" alt="image" src="https://github.com/evertec/athmovil-javascript-api/assets/99409598/ef770810-cb48-4ba5-ac8d-acd8b81386da">
 
- 
-The correct implementation of div and scripts, should show the payment button like this example:
-
 After clicking the Javascript consumes the first service "/payment", this service could response a success or an error status.
 
 If you receive a success status, you will also get a ecommerceId and auth\_token in the data response property and open a modal that shows you a message for waiting.
@@ -223,7 +219,7 @@ After receiving the push notification, the customer must open the ATHMovil app a
 
 `authorizationATHM`. This function returns a JSON object with the details of the transaction after it has been completed and processed.
 
-```javascript
+```json
 {
     "status": "success",
     "data": {
@@ -233,8 +229,8 @@ After receiving the push notification, the customer must open the ATHMovil app a
         "businessCustomerId": "402894d56e713892016e7f2963de0010",
         "transactionDate": "2023-05-23 14:06:54",
         "dailyTransactionId": "0001",
-        "businessName": "Tdameritrade",
-        "businessPath": "Tdameritrade",
+        "businessName": "I Love Puerto Rico",
+        "businessPath": "ilovepr",
         "industry": "COMPUTERS",
         "subTotal": 1.33,
         "tax": 1.00,
@@ -251,7 +247,7 @@ After receiving the push notification, the customer must open the ATHMovil app a
                 "quantity": 1,
                 "price": 1.33,
                 "tax": 1,
-                "metadata": "Bitcoin es lo mejor",
+                "metadata": "ATH Movil es lo mejor",
                 "formattedPrice": "",
                 "sku": ""
             }
@@ -263,7 +259,7 @@ After receiving the push notification, the customer must open the ATHMovil app a
 
 `cancelATHM`. This function consumes “/findPayment” service  to retrieve the status of the transaction in the event that it gets cancelled and returns a JSON object with the details of the transaction.
 
-```javascript
+```json
 {
     "status": "success",
     "data": {
@@ -273,8 +269,8 @@ After receiving the push notification, the customer must open the ATHMovil app a
         "businessCustomerId": "402894d56e713892016e7f2963de0010",
         "transactionDate": "",
         "dailyTransactionId": "",
-        "businessName": "Tdameritrade",
-        "businessPath": "Tdameritrade",
+        "businessName": "I Love Puerto Rico",
+        "businessPath": "ilovepr",
         "industry": "COMPUTERS",
         "subTotal": 1.33,
         "tax": 1.00,
@@ -291,7 +287,7 @@ After receiving the push notification, the customer must open the ATHMovil app a
                 "quantity": 1,
                 "price": 1.33,
                 "tax": 1,
-                "metadata": "Bitcoin es lo mejor",
+                "metadata": "ATH Movil es lo mejor",
                 "formattedPrice": "",
                 "sku": ""
             }
@@ -303,7 +299,7 @@ After receiving the push notification, the customer must open the ATHMovil app a
 
 `expiredATHM`. This function consumes “/findPayment” service to retrieve the status of the transaction in the event that it expires and returns a JSON object with the details of the transaction. 
 
-```javascript
+```json
 {
     "status": "success",
     "data": {
@@ -313,8 +309,8 @@ After receiving the push notification, the customer must open the ATHMovil app a
         "businessCustomerId": "402894d56e713892016e7f2963de0010",
         "transactionDate": "",
         "dailyTransactionId": "",
-        "businessName": "Tdameritrade",
-        "businessPath": "Tdameritrade",
+        "businessName": "I Love Puerto Rico",
+        "businessPath": "ilovepr",
         "industry": "COMPUTERS",
         "subTotal": 1.33,
         "tax": 1.00,
@@ -331,7 +327,7 @@ After receiving the push notification, the customer must open the ATHMovil app a
                 "quantity": 1,
                 "price": 1.33,
                 "tax": 1,
-                "metadata": "Bitcoin es lo mejor",
+                "metadata": "ATH Movil es lo mejor",
                 "formattedPrice": "",
                 "sku": ""
             }
@@ -354,26 +350,17 @@ This service can be used to find the status of a transaction. This service “/b
 - `**ecommerceId**`: This ID represent the ticket of the transaction to be paid with the information provided in the request.
 - `**publicToken**`: Determines the business account that the payment will be sent to.
 
-
+```bash
 curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-api.us-east-1.vpce.amazonaws.com/api/business-transaction/ecommerce/business/findPayment' \
-
---header 'Host: ozm9fx7yw5.execute-api.us-east-1.amazonaws.com' \
-
---header 'Accept: application/json' \
-
---header 'Authorization: Bearer \
-
---header 'Content-Type: application/json' \
-
---data-raw '{
-
+  --header 'Host: ozm9fx7yw5.execute-api.us-east-1.amazonaws.com' \
+  --header 'Accept: application/json' \
+  --header 'Authorization: Bearer <your_access_token>' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+    "ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
+    "publicToken": "a66ce73d04f2087615f6320b724defc5b4eedc55"
+  }'
 ```
-"ecommerceId"': "177a50fd-39fb-11ed-8b3d-230262020527",
-
-"publicToken"': "a66ce73d04f2087615f6320b724defc5b4eedc55",
-
-}
-``` 
 
 
 **Response**
@@ -400,78 +387,49 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status `COMPLETED`
 
+
+
+```json
 {
-
-```
-"status": "success",
-
-"data": {
-
-"ecommerceStatus": "COMPLETED",
-
-"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
-
-"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
-
-"businessCustomerId": "402894d56e713892016e7f2963de0010",
-
-"transactionDate": "2023-01-13 16:17:06",
-
-"dailyTransactionId": "0006",
-
-"businessName": "Tdameritrade",
-
-"businessPath": "Tdameritrade",
-
-"industry": "ENTERTAINMENT",
-
-"subTotal": 0,
-
-"tax": 0.00,
-
-"total": 1,
-
-"fee": 0.6000000238418579,
-
-"netAmount": 0.40,
-
-"totalRefundedAmount": 0,
-
-"metadata1": "Metadata 1",
-
-"metadata2": "Metada 2",
-
-"items": [
-
-{
-
-"name": "Diego MO",
-
-"description": "Diego",
-
-"quantity": 1,
-
-"price": 10,
-
-"tax": 0,
-
-"metadata": "Bitcoin es lo mejor"
-
+  "status": "success",
+  "data": {
+    "ecommerceStatus": "COMPLETED",
+    "ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
+    "referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
+    "businessCustomerId": "402894d56e713892016e7f2963de0010",
+    "transactionDate": "2023-01-13 16:17:06",
+    "dailyTransactionId": "0006",
+    "businessName": "I Love Puerto Rico",
+    "businessPath": "ilovepr",
+    "industry": "ENTERTAINMENT",
+    "subTotal": 0,
+    "tax": 0.00,
+    "total": 1,
+    "fee": 0.6000000238418579,
+    "netAmount": 0.40,
+    "totalRefundedAmount": 0,
+    "metadata1": "Metadata 1",
+    "metadata2": "Metada 2",
+    "items": [
+      {
+        "name": "Diego MO",
+        "description": "Diego",
+        "quantity": 1,
+        "price": 10,
+        "tax": 0,
+        "metadata": "ATH Movil es lo mejor"
+      }
+    ],
+    "isNonProfit": false
+  }
 }
 
-],
-
-"isNonProfit": false
-
-}
-
-}
 ```
 
 
 
 Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Response: Status `OPEN`
-```
+```json
 {
 
    "status": "success",
@@ -490,13 +448,13 @@ Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Respon
 
         "dailyTransactionId": "",
 
-        "businessName": "Tdameritrade",
+        "businessName": "I Love Puerto Rico",
 
-        "businessPath": "Tdameritrade",
+        "businessPath": "ilovepr",
 
         "industry": "COMPUTERS",
 
-        subTotal": 1.33,
+        "subTotal": 1.33,
 
           "tax": 1.00,
 
@@ -526,7 +484,7 @@ Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Respon
 
                 "tax": 1,
 
-                "metadata": "Bitcoin es lo mejor",
+                "metadata": "ATH Movil es lo mejor",
 
                 "formattedPrice": "",
 
@@ -544,150 +502,82 @@ Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Respon
 
 Transaction confirmed by the ATH Móvil customer but pending to be processed by the merchant (/payment+/confirm) Response: Status `CONFIRM`
 
-```
+```json
 {
-
-"status": "success",
-
-"data": {
-
-"ecommerceStatus": "CONFIRM",
-
-"ecommerceId": "39906664-e44e-11ed-b127-a519df48811e",
-
-"referenceNumber": "",
-
-"businessCustomerId": "402894d56e713892016e7f2963de0010",
-
-"transactionDate": "",
-
-"dailyTransactionId": "",
-
-"businessName": "Tdameritrade",
-
-"businessPath": "Tdameritrade",
-
-"industry": "COMPUTERS",
-
-"subTotal": 1.33,
-
-"tax": 1.00,
-
-"total": 2.33,
-
-"fee": 0.00,
-
-"netAmount": 0,
-
-"totalRefundedAmount": 0,
-
-"metadata1": "Metadata 1",
-
-"metadata2": "Metada 2",
-
-"items": [
-
-{
-
-"name": "Diego MO",
-
-"description": "Diego",
-
-"quantity": 1,
-
-"price": 1.33,
-
-"tax": 1,
-
-"metadata": "Bitcoin es lo mejor",
-
-"formattedPrice": "",
-
-"sku": ""
-
-}
-
-],
-
-"isNonProfit": false
-
-}
-
+  "status": "success",
+  "data": {
+    "ecommerceStatus": "CONFIRM",
+    "ecommerceId": "39906664-e44e-11ed-b127-a519df48811e",
+    "referenceNumber": "",
+    "businessCustomerId": "402894d56e713892016e7f2963de0010",
+    "transactionDate": "",
+    "dailyTransactionId": "",
+    "businessName": "I Love Puerto Rico",
+    "businessPath": "ilovepr",
+    "industry": "COMPUTERS",
+    "subTotal": 1.33,
+    "tax": 1.00,
+    "total": 2.33,
+    "fee": 0.00,
+    "netAmount": 0,
+    "totalRefundedAmount": 0,
+    "metadata1": "Metadata 1",
+    "metadata2": "Metada 2",
+    "items": [
+      {
+        "name": "Diego MO",
+        "description": "Diego",
+        "quantity": 1,
+        "price": 1.33,
+        "tax": 1,
+        "metadata": "ATH Movil es lo mejor",
+        "formattedPrice": "",
+        "sku": ""
+      }
+    ],
+    "isNonProfit": false
+  }
 }
 ```
 
 
 Transaction Expired or Canceled Response: Status`CANCEL`
 
-```
+```json
 {
-
-"status": "success",
-
-"data": {
-
-"ecommerceStatus": "CANCEL",
-
-"ecommerceId": "29bc7846-e44f-11ed-b127-839ef0792c17",
-
-"referenceNumber": "",
-
-"businessCustomerId": "402894d56e713892016e7f2963de0010",
-
-"transactionDate": "",
-
-"dailyTransactionId": "",
-
-"businessName": "Tdameritrade",
-
-"businessPath": "Tdameritrade",
-
-"industry": "COMPUTERS",
-
-"subTotal": 1.33,
-
-"tax": 1.00,
-
-"total": 2.33,
-
-"fee": 0.00,
-
-"netAmount": 0,
-
-"totalRefundedAmount": 0,
-
-"metadata1": "Metadata 1",
-
-"metadata2": "Metada 2",
-
-"items": [
-
-{
-
-"name": "Diego MO",
-
-"description": "Diego",
-
-"quantity": 1,
-
-"price": 1.33,
-
-"tax": 1,
-
-"metadata": "Bitcoin es lo mejor",
-
-"formattedPrice": "",
-
-"sku": ""
-
-}
-
-],
-
-"isNonProfit": false
-
-}
-
+  "status": "success",
+  "data": {
+    "ecommerceStatus": "CANCEL",
+    "ecommerceId": "29bc7846-e44f-11ed-b127-839ef0792c17",
+    "referenceNumber": "",
+    "businessCustomerId": "402894d56e713892016e7f2963de0010",
+    "transactionDate": "",
+    "dailyTransactionId": "",
+    "businessName": "I Love Puerto Rico",
+    "businessPath": "ilovepr",
+    "industry": "COMPUTERS",
+    "subTotal": 1.33,
+    "tax": 1.00,
+    "total": 2.33,
+    "fee": 0.00,
+    "netAmount": 0,
+    "totalRefundedAmount": 0,
+    "metadata1": "Metadata 1",
+    "metadata2": "Metada 2",
+    "items": [
+      {
+        "name": "Diego MO",
+        "description": "Diego",
+        "quantity": 1,
+        "price": 1.33,
+        "tax": 1,
+        "metadata": "ATH Movil es lo mejor",
+        "formattedPrice": "",
+        "sku": ""
+      }
+    ],
+    "isNonProfit": false
+  }
 }
 ```
 ## Refund Payment
@@ -706,99 +596,56 @@ This is a Web Service that allows to refund a completed ecommerce transaction.
     - Host
 
 **Request:**
-```
+```json
 {
-
-`  `"publicToken": "hdb932832klnasKJGDW90291",
-
-`  `"privateToken": "JHEFEWP2048FNDFLKJWB2",
-
-`  `"referenceNumber": "fdew98ffw9fbfewkjb", //transactionId
-
-`  `"amount": "1.00",
-
-`  `"message": "MSG Test" //Optional
-
+  "publicToken": "hdb932832klnasKJGDW90291",
+  "privateToken": "JHEFEWP2048FNDFLKJWB2",
+  "referenceNumber": "fdew98ffw9fbfewkjb", // transactionId
+  "amount": "1.00",
+  "message": "MSG Test" // Optional
 }
+
 ```
 
 **Response**
-```
+```json
 {
-
-`  `"status": "success",
-
-`  `"data": {
-
-`    `"refund": {
-
-`      `"transactionType": "REFUND",
-
-`      `"status": "COMPLETED",
-
-`      `"refundedAmount": 1.00,
-
-`      `"date": "123412341234", //timestamp
-
-`      `"referenceNumber": "402894d56b240610016b2e6c78a6003a", //Refund transactionId
-
-`      `"dailyTransactionID": "0107",
-
-`      `"name": " Valeria Herrero",
-
-`      `"phoneNumber": "(787) 123-4567",
-
-`      `"email": "valher@gmail.com"
-
-`    `},
-
-`    `"originalTransaction": {
-
-`      `"transactionType": "PAYMENT",
-
-`      `"status": "COMPLETED",
-
-`      `"date": "123412341234", //timestamp
-
-`      `"referenceNumber": "402894d56b240610016b2e6c78a6003a", //Original Payment transactionId
-
-`      `"dailyTransactionID": "0106",
-
-`      `"name": "Valeria Herrero",
-
-`      `"phoneNumber": "(787) 123-4567",
-
-`      `"email": "valher@gmail.com",
-
-`      `"message": "",
-
-`      `"total": 1.00,
-
-`      `"tax": 0.00,
-
-`      `"subtotal": 0.00,
-
-`      `"fee": 0.00,
-
-`      `"netAmount": 0.00,
-
-`      `"totalRefundedAmount": 1.00,
-
-`      `"metadata1": "metadata1 test",
-
-`      `"metadata2": "metadata2 test",
-
-`      `"items": [
-
-
-
-`      `]
-
-`    `}
-
-`  `}
-
+  "status": "success",
+  "data": {
+    "refund": {
+      "transactionType": "REFUND",
+      "status": "COMPLETED",
+      "refundedAmount": 1.00,
+      "date": "123412341234", // timestamp
+      "referenceNumber": "402894d56b240610016b2e6c78a6003a", // Refund transactionId
+      "dailyTransactionID": "0107",
+      "name": "Valeria Herrero",
+      "phoneNumber": "(787) 123-4567",
+      "email": "valher@gmail.com"
+    },
+    "originalTransaction": {
+      "transactionType": "PAYMENT",
+      "status": "COMPLETED",
+      "date": "123412341234", // timestamp
+      "referenceNumber": "402894d56b240610016b2e6c78a6003a", // Original Payment transactionId
+      "dailyTransactionID": "0106",
+      "name": "Valeria Herrero",
+      "phoneNumber": "(787) 123-4567",
+      "email": "valher@gmail.com",
+      "message": "",
+      "total": 1.00,
+      "tax": 0.00,
+      "subtotal": 0.00,
+      "fee": 0.00,
+      "netAmount": 0.00,
+      "totalRefundedAmount": 1.00,
+      "metadata1": "metadata1 test",
+      "metadata2": "metadata2 test",
+      "items": []
+    }
+  }
 }
+
 ```
 
 ## Cancel Payment
@@ -819,23 +666,19 @@ This is a Web Service to cancel the ecommerce transaction.
 
 **Request:**
 
-
-`"ecommerceId"`: "177a50fd-39fb-11ed-8b3d-230262020527",
-
-`"publicToken"`: "3adc528b182e50b41acff658136bd974c89604c3"
-
-
+```json
+{
+  "ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
+  "publicToken": "3adc528b182e50b41acff658136bd974c89604c3"
+}
+```
 
 **Response:**
-```
+
+```json
 {
-
-
-
-"status": "success",
-
-"data": "Payment Cancelled."
-
+  "status": "success",
+  "data": "Payment Cancelled."
 }
 ```
 
@@ -846,46 +689,37 @@ The error messages for the PB will follow a standard response structure of statu
 - Request without a token authentication.
 
 
-```
+```json
+
 {
-
-"status": "error",
-
-"message": "No authorization header present.",
-
-"errorcode": "token.invalid.header",
-
-"data": null
-
+  "status": "error",
+  "message": "No authorization header present.",
+  "errorcode": "token.invalid.header",
+  "data": null
 }
 ```
 
 - Request with an expired token.
 
-```
+```json
 {
-
-`    `"status": "error",
-
-`    `"message": "The Token has expired on Fri Oct 28 15:21:00 AST 2022.",
-
-`    `"errorcode": "token.expired",
-
-`    `"data": null
-
+  "status": "error",
+  "message": "The Token has expired on Fri Oct 28 15:21:00 AST 2022.",
+  "errorcode": "token.expired",
+  "data": null
 }
 ```
 - When the Object request it’s empty.
-```
+```json
 {
 
-`    `"status": "error",
+"status": "error",
 
-`    `"message": "Required request body is missing",
+"message": "Required request body is missing",
 
-`    `"errorcode": "BTRA\_0006",
+"errorcode": 'BTRA\_0006',
 
-`    `"data": null
+"data": null
 
 }
 ```
@@ -1061,7 +895,7 @@ The following services can be used to search for transactions, perform refunds a
 * Headers: `Content-Type` -	`application/json`
 * Endpoint: `https://www.athmovil.com/api/v4/searchTransaction`
 * Body Example:
-```javascript
+```json
 {
     "publicToken": "hdb932832klnasKJGDW90291",
     "privateToken": "JHEFEWP2048FNDFLKJWB2",
@@ -1081,7 +915,7 @@ The following services can be used to search for transactions, perform refunds a
   * *Multiple fields can be used simultaneously on the request.*
 
 * Reponse Example:
-```javascript
+```json
 {
     "transactionType": "ECOMMERCE",
     "status": "COMPLETED",
@@ -1129,7 +963,7 @@ The following services can be used to search for transactions, perform refunds a
 * Headers: `Content-Type` -	`application/json`
 * Endpoint: `https://www.athmovil.com/api/v4/refundTransaction`
 * Body Example:
-```javascript
+```json
 {
     "publicToken": "hdb932832klnasKJGDW90291",
     "privateToken": "JHEFEWP2048FNDFLKJWB2",
@@ -1145,7 +979,7 @@ The following services can be used to search for transactions, perform refunds a
 * Headers: `Content-Type` -	`application/json`
 * Endpoint: `https://www.athmovil.com/transactions/v4/transactionReport`
 * Body Example:
-```javascript
+```json
 {
     "publicToken": "hdb932832klnasKJGDW90291",
     "privateToken": "JHEFEWP2048FNDFLKJWB2",
@@ -1154,7 +988,7 @@ The following services can be used to search for transactions, perform refunds a
 }
 ```
 * Response Example:
-```javascript
+```json
 [
     {
         "transactionType": "ECOMMERCE",
