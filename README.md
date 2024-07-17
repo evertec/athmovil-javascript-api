@@ -73,22 +73,42 @@
 
 [**Other information	28****](#_toc143170439)
 
-## Introduction
+# Introduction
 ATH Móvil's Javascript integration provides a simple, secure and fast checkout experience to customers paying on your website. After integrating our Payment Button on your website, you will be able to receive real time payments from more than 1.5 million ATH Móvil users.
 
 The API called for this JavaScript code is build based on JWT protocol to securely authenticate the communication between our services.
 
+
 Disclaimer: The Payment Button ATH Móvil is not compatible with any major Ecommerce platform. This includes Shopify, Wix, Woocommerce or Stripe.
 
 
+Disclaimer: We currently **do not** have a **Testing environment**. You need to have an active ATH Business account and a active ATH Móvil account.
+
 ## Prerequisites
 Before using the ATH Móvil’s payment you need to have:
+
+### ATH Business
 
 1\. An active ATH Business account.
 
 2\. A card registered in your ATH Business profile. 
 
 3\. The public and private key assigned to your business.
+
+For instructions on how to open a ATH Business account please refer to: [ATHB flyer eng letter 1.pdf](https://github.com/user-attachments/files/16267504/ATHB.flyer.eng.letter.1.pdf)
+
+For more information related to ATH Business and how it works please refer to:[ATH BUSINESS_Apr2024.pptx](https://github.com/user-attachments/files/16267585/ATH.BUSINESS_Apr2024.pptx)
+
+### ATH Móvil
+
+To complete the payment for testing purposes you need to have:
+
+1\. An active ATH Móvil account.
+
+2\. A card registered in your ATH Móvil profile. It can not be the same card that is registered in ATH Business.
+
+For more information related to ATH Móvil and how it works please refer to:[ATH Móvil_Apr2024.pptx](https://github.com/user-attachments/files/16267592/ATH.Movil_Apr2024.pptx)
+
 
 To start working with the Javascript for ATH Móvils Payment Button with all its services, it is mandatory to have a Public Token per each business. This Public Token is found in the settings section of the ATH Business app and is assigned one unique token per ATH Business account. 
 
@@ -379,8 +399,8 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 - `**fee**`: Fee to be charged in the transaction.
 - `**netAmount**`: Net amount of the transaction
 - `**totalRefundedAmount**`:  amount to be refunded from the original transaction.
-- `**metadata1**`: variable that can be left empty or filled with additional transaction information. Max length 40 characters.
-- `**metadata2**`: variable that can be left empty or filled with additional transaction information. Max length 40 characters.
+- `**metadata1**`: variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
+- `**metadata2**`: variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
 - `**items**`: Items paid in the transaction.
 
 
