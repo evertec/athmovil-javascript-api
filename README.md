@@ -4,16 +4,8 @@
 
 |Date|Changes|Comments|
 | - | - | - |
-|08/17/2023|Initial version 1.0||
-||||
-||||
-||||
-||||
-||||
-||||
-||||
-||||
-||||
+|08/17/2023|Initial version 1.0|
+| 07/17/2024 | Version 1.2 |  General information related to ATH Business & ATH Móvil with instructions on how to open an account. |
 
 
 
