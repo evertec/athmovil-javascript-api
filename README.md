@@ -122,7 +122,8 @@ ATH Business Settings:
 
 
 ## Support
-If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form:  https://forms.gle/ZSeL8DtxVNP2K2iDA.
+If you need help signing up, adding a card or have any other question please refer to https://ath.business.com/preguntas. For technical support please complete the following form:  https://ath.business/botondepago.
+
 ## Customer Experience
 The new version of the payment button will introduce more security and synchronization with both the merchant and the customer. Here you can see a brief diagram on the high-level flow of the transaction:
 
