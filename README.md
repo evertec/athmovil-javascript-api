@@ -6,7 +6,7 @@
 | - | - | - |
 |08/17/2023|Initial version 1.0|
 | 07/17/2024 | Version 1.2 |  General information related to ATH Business & ATH Móvil with instructions on how to open an account. |
-
+| 10/30/2024 | Version 1.2.1 |  General information related to the Javascript configuration. |
 
 
 
@@ -193,7 +193,22 @@ Finally, you should add in your body html a <div></div> tag with value "ATHMovil
     </script>
 </body>
 ```
+**Detail:**
 
+| **Variable** | **Data type** | **Required** | **Values** | **Description** |
+| --- | --- | --- | --- | --- |
+| env | String | YES | Production | Determines the environment to be used for the payment. |
+| publicToken | String | YES | Business account public token | Determines the business account that the payment will be sent to. |
+| timeout | Number | No | Number between 120 and 600. | Time limit before the service responds with timeout error. Default value is set to 600 seconds (10 mins). |
+| theme | String | Yes | btn, btn-dark or btn-light. | Determines the colors of the “Pay with ATH Móvil” button that is displayed on your view. |
+| lang | String | Yes | en for english or es for spanish. | Determines the language of the “Pay with ATH Móvil” button and the payment process. |
+| total | Number | Yes | From 1.00 to 1500.00 | Total amount to be paid by the end user. |
+| tax | Number | No || Optional variable to display the payment tax (if applicable). |
+| subtotal | Number | No || Optional variable to display the payment tax (if applicable). |
+| metadata1 | String | Yes || variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.|
+| metadata2 | String | Yes || variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters. |
+| items | Array | Yes || Optional variable to display the items that the user is purchasing on ATH Móvil's payment screen. _metadata and tax are required but they can be set as null._ |
+| phoneNumber | Number | Yes || The phone number registered to the ATH Móvil account where the payment is going to be sent to. |
 ## Usage
 The correct implementation of div and scripts, should show the payment button like this example:
 
