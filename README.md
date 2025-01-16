@@ -7,7 +7,7 @@
 |08/17/2023|Initial version 1.0|
 | 07/17/2024 | Version 1.2 |  General information related to ATH Business & ATH Móvil with instructions on how to open an account. |
 | 10/30/2024 | Version 1.2.1 |  General information related to the Javascript configuration. |
-| 1/16/2025 | Version 1.2.3 |  Updated headers for Refund service. |
+| 1/16/2025 | Version 1.2.2 |  Updated headers for Refund service. |
 
 
 
