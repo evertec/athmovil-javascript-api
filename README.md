@@ -380,7 +380,7 @@ This service can be used to find the status of a transaction. This service “/b
 - `**publicToken**`: Determines the business account that the payment will be sent to.
 
 ```bash
-curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-api.us-east-1.vpce.amazonaws.com/api/business-transaction/ecommerce/business/findPayment' \
+curl --location --request POST 'https://payments.athmovil.com/api/business-transaction/ecommerce/business/findPayment' \
   --header 'Host: ozm9fx7yw5.execute-api.us-east-1.amazonaws.com' \
   --header 'Accept: application/json' \
   --header 'Authorization: Bearer <your_access_token>' \
