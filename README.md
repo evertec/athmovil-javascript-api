@@ -8,7 +8,7 @@
 | 07/17/2024 | Version 1.2 |  General information related to ATH Business & ATH Móvil with instructions on how to open an account. |
 | 10/30/2024 | Version 1.2.1 |  General information related to the Javascript configuration. |
 | 1/16/2025 | Version 1.2.2 |  Updated headers for Refund service. |
-
+| 2/27/2025 | Version 1.2.3 |  WooCommerce plug in now available. |
 
 
 
@@ -71,8 +71,9 @@ ATH Móvil's Javascript integration provides a simple, secure and fast checkout 
 
 The API called for this JavaScript code is build based on JWT protocol to securely authenticate the communication between our services.
 
+New plug in now available for WooCommerce: https://wordpress.org/plugins/ath-movil-pay-button-payment-gateway
 
-Disclaimer: The Payment Button ATH Móvil is not compatible with any major Ecommerce platform. This includes Shopify, Wix, Woocommerce or Stripe.
+Disclaimer: The Payment Button ATH Móvil is not compatible with any major Ecommerce platform. This includes Shopify, Wix, or Stripe.
 
 
 Disclaimer: We currently **do not** have a **Testing environment**. You need to have an active ATH Business account and a active ATH Móvil account.
