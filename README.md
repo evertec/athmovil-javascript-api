@@ -108,13 +108,13 @@ To start working with the Javascript for ATH Móvils Payment Button with all its
 
 Additionally have the link for athmovil\_base.js to add it in your ecommerce platform with a tag<script></script>.
 
-Production link: https://payments.athmovil.com/api/js/athmovil_base.js
+Production link: https://payments.athmovil.com/api/modal/js/athmovil_base.js
 
 ```javascript
 <script>
     var publicToken = "a66ce73d04f2087615f6320b724defc5b4eedc55";
 </script>
-<script src="https://payments.athmovil.com/api/js/athmovil_base.js"></script>
+<script src="https://payments.athmovil.com/api/modal/js/athmovil_base.js"></script>
 ```
 ATH Business Settings:
 
@@ -138,7 +138,7 @@ Next add in your tag <body></body> two scripts using <script></scrip> tag.
 
 The first script should have the athmovil\_base.js link in **src** property, for example:  
 ```javascript
-<script src="https://payments.athmovil.com/api/js/athmovil_base.js"></script>
+<script src="https://payments.athmovil.com/api/modal/js/athmovil_base.js"></script>
 ```
 The second script should have a JSON object called "ATHM\_Checkout" where you should put your public token as the value for the property publicToken from ATHM\_Checkout object.
 
@@ -154,7 +154,7 @@ Finally, you should add in your body html a <div></div> tag with value "ATHMovil
 ```html
 <body>
 <div id="ATHMovil_Checkout_Button_payment"></div>
-<script src="https://payments.athmovil.com/api/js/athmovil_base.js"></script>
+<script src="https://payments.athmovil.com/api/modal/js/athmovil_base.js"></script>
 <script type="text/javascript">
           const ATHM_Checkout = {
               env: 'production',
