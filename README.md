@@ -986,22 +986,6 @@ The following services can be used to search for transactions, perform refunds a
 
 ----
 
-### Refund
-* Method:` POST`
-* Headers: `Content-Type` -	`application/json`
-* Endpoint: `https://www.athmovil.com/api/v4/refundTransaction`
-* Body Example:
-```json
-{
-    "publicToken": "hdb932832klnasKJGDW90291",
-    "privateToken": "JHEFEWP2048FNDFLKJWB2",
-    "referenceNumber": "fdew98ffw9fbfewkjb"
-    "amount":"1.00"
-}
-```
-
-----
-
 ### Transaction Report
 * Method:` GET`
 * Headers: `Content-Type` -	`application/json`
